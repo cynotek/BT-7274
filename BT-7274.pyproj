@@ -30,6 +30,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="cogs" />
+    <Folder Include="data\" />
+    <Folder Include="data\preban\" />
+    <Folder Include="data\titanfall\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include=".gitignore" />
+    <Content Include="data\preban\banlist.json" />
+    <Content Include="data\titanfall\items.json" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
 </Project>

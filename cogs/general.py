@@ -8,12 +8,7 @@ class General:
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
-    async def oauth(self, ctx):
-        """Sends bot oauth url"""
-        url = utils.oauth_url(self.bot.user.id, permissions=Permissions(8))
-
-        await ctx.author.send(url)
+    
 
     @commands.command()
     @commands.guild_only()
@@ -40,7 +35,7 @@ class General:
 
         game = "Chilling in {} status".format(user.status)
 
-        if user.game is None:
+        if user.activities is None:
             pass
         elif user.game.url is None:
             game = "Playing {}".format(user.game)
