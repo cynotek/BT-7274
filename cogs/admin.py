@@ -1,6 +1,5 @@
 import discord
 from discord.ext import commands
-from config.config import cogs_dir
 from sys import version_info
 
 
@@ -44,7 +43,7 @@ class Admin:
     async def load(self, ctx, *, module: str):
         """Loads a module."""
         try:
-            self.bot.load_extension(f'{cogs_dir}{module}')
+            self.bot.load_extension(f'cogs.{module}')
         except Exception as e:
             await ctx.send(f'{type(e).__name__}: {e}')
         else:
@@ -54,7 +53,7 @@ class Admin:
     async def unload(self, ctx, *, module: str):
         """Unloads a module."""
         try:
-            self.bot.unload_extension(f'{cogs_dir}{module}')
+            self.bot.unload_extension(f'cogs.{module}')
         except Exception as e:
             await ctx.send(f'{type(e).__name__}: {e}')
         else:
@@ -64,8 +63,8 @@ class Admin:
     async def reload(self, ctx, *, module: str):
         """Reloads a module."""
         try:
-            self.bot.unload_extension(f'{cogs_dir}{module}')
-            self.bot.load_extension(f'{cogs_dir}{module}')
+            self.bot.unload_extension(f'cogs.{module}')
+            self.bot.load_extension(f'cogs.{module}')
         except Exception as e:
             await ctx.send(f'{type(e).__name__}: {e}')
         else:

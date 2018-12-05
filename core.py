@@ -1,10 +1,7 @@
 #!/usr/bin/env python3.6
-import asyncio
 import discord
 from discord.ext import commands
 from config import token
-import traceback
-import sys
 
 startup_extensions = ['selfrole']
 
@@ -15,15 +12,11 @@ async def on_ready():
     print(f'{bot.user.name} online')
 
 if __name__ == "__main__":
-
     for extension in startup_extensions:
-
         try:
-
             bot.load_extension(f'cogs.{extension}')
 
         except Exception as e:
-
             exc = f'{type(e).__name__}: {e}'
 
             print(f'Failed to load extension {extension}\n{exc}')
