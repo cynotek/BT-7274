@@ -5,7 +5,7 @@ from config import token
 
 startup_extensions = ['selfrole']
 
-bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned, pm_help=None, help_attrs=dict(hidden=True))
+bot = commands.Bot(command_prefix=commands.when_mentioned, pm_help=None, help_attrs=dict(hidden=True))
 
 @bot.event
 async def on_ready():
