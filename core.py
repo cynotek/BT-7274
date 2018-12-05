@@ -1,8 +1,7 @@
 #!/usr/bin/env python3.6
-
 import asyncio
 from discord.ext import commands
-from config.config import token, cogs_dir, owner_id
+from config import token
 import traceback
 import sys
 
@@ -17,12 +16,10 @@ desc = """
        BT-7274 - built by Cynotek
        """
 
-startup_extensions = ['admin',
-                      'general',
-                      'titanfall',
+startup_extensions = ['general',
                       'selfrole']
 
-bot = commands.Bot(owner_id=owner_id, command_prefix=commands.when_mentioned_or('!'), description=desc, pm_help=None, help_attrs=dict(hidden=True))
+bot = commands.AutoShardedBot(command_prefix=commands.when_mentioned_or('!'), description=desc, pm_help=None, help_attrs=dict(hidden=True))
 
 
 @bot.event
@@ -40,7 +37,7 @@ async def on_command_error(ctx, error):
 if __name__ == "__main__":
     for extension in startup_extensions:
         try:
-            bot.load_extension(f'{cogs_dir}{extension}')
+            bot.load_extension(f'cogs.{extension}')
         except Exception as e:
             exc = f'{type(e).__name__}: {e}'
             print(f'Failed to load extension {extension}\n{exc}')

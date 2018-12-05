@@ -89,4 +89,4 @@ ENV/
 .ropeproject
 
 # Ignore user created config
-config.json
+config.py
